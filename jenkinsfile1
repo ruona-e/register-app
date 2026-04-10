@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'jenkins-agent' }
-    tool {
+    tools {
       jdk 'Java21'
       maven 'Maven3'
     }
@@ -10,9 +10,11 @@ pipeline {
               cleanWs()
               }
        }
-      stage("Checkout from SCM"){
-              steps {
-                  git branch: 'main', credentialsId: 'github', url: 'https://github.com/ruona-e/register-app'
+      stage("Checkout from SCM") {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'github',
+                    url: 'https://github.com/ruona-e/register-app'
               }  
         }
 
@@ -28,3 +30,4 @@ pipeline {
         }
     }
 }
+
